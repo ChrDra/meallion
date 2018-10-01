@@ -1,0 +1,32 @@
+
+.preview_img_section{
+    margin-top: 20px;
+    padding-bottom:7px;
+    padding-top:7px;
+    color: black;
+}
+
+.image_element{
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #ff9400;
+}
+
+.upload-element-img{
+    min-height: 300px;
+    width: 100%;
+    background-repeat:no-repeat;
+    background-position:center top;
+    background-size: 100%;
+}
+
+.tags_update_button{
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+#clarify_credential_img{
+    width: 130px;
+    height: 130px;
+}

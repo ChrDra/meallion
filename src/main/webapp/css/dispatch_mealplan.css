@@ -1,0 +1,71 @@
+.dropdown-list-visible{
+    z-index:1000;
+    position: fixed;
+}
+
+.portion-select-list{
+    position: absolute;
+    height: auto;
+    width: 30px;
+    top: 30px;
+    right: 0px;
+    background-color: #FFF;
+    border-left: 1px solid #d9dde2;
+    border-bottom: 1px solid #d9dde2;
+    opacity: 80;
+    padding: 0px;
+    border-bottom-left-radius: 10px;
+    filter: none;
+    display: none;
+  z-index: 1000;
+ 
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  list-style: none;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+    
+}
+
+.mealplan_portions_selection_switch_button{
+    
+}
+
+#recipe_section{
+
+}
+
+.mealplan_container{
+    margin-bottom: 20px;
+}
+
+#mealplan_save_section{
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #cccccc;
+}
+
+#mealplan_save_section{
+    display: none;
+}
+
+#mealplan_name_already_exits_label{
+    margin: auto;
+    display: none;
+}
+
+#mealplan_save_section_name_exists_already{
+    display: none;
+    margin-top: 10px;
+
+}
+
+#mealplan_save_section_input{
+    border: 1px solid #cccccc;
+}

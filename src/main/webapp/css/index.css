@@ -1,0 +1,115 @@
+.search_section{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.toggle_section{
+    margin-top:0px;
+    margin-bottom:10px;
+}
+
+.toggle_section_element{
+    margin: 5px;
+    padding: 5px;
+    min-height: 70px;
+}
+
+.toggle_section_element_text{
+}
+
+.toggle_section_range_slider{
+    position: relative;
+}
+
+.toggle_section_element_text{
+    font-size: 16px;
+}
+
+.toggle_section_element_content{
+    margin-bottom: 7px;
+    text-align: center;
+}
+
+.main_search_input_button{
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.main_search_input_group_tags{
+    min-height: 40px;
+}
+
+.main_search_input_button{
+    min-height: 40px;
+}
+
+.search_description{
+    padding-left: 30px;
+
+}
+
+.example_label{
+    font-size: 13px;
+}
+
+#offering_placeholder{
+    margin-bottom: 10px;
+}
+
+#uploadbutton{
+    width: 50%;
+    height: 100px;
+    margin-left: 25%;
+    overflow-wrap: break-word;
+}
+
+#preview_img_section{
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #cccccc;
+}
+
+#preview_img{
+    width: 100%;
+    height: 100%;
+}
+
+#preview_img_section{
+    margin-left: 25%;
+    width: 50%;
+}
+
+#recipe_menu_switch_element{
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.recipes_menu_switch_button {
+    background-color: #cccccc;
+    width: -webkit-calc(50% - 4px);
+    width:    -moz-calc(50% - 4px);
+    width:         calc(50% - 4px);
+    float: left;
+    margin: 2px;
+}
+
+.recipes_menu_switch_button:focus {
+     background-color: #63cc87;
+}
+
+.l_o_h{
+    object-fit: cover;
+    object-position: 50% 50%;
+    opacity: 0.8;
+    width: 100%;
+    height: 100%;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+
+.carousel_image{
+    width: 100%;
+    height: 100%;
+    background-size:     cover;                     
+    background-repeat:   no-repeat;
+    background-position: center center;  
+}

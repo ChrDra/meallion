@@ -1,0 +1,108 @@
+
+/* checkbox slider ------------------------- */
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.checkbox_slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.checkbox_slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .checkbox_slider {
+  background-color: #ff9400;
+}
+
+input:focus + .checkbox_slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .checkbox_slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.checkbox_slider.round {
+  border-radius: 34px;
+}
+
+.checkbox_slider.round:before {
+  border-radius: 50%;
+}
+
+
+/* range slider ------------------------- */
+
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+}
+.range_slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;   
+    background: #63cc87;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+input[type=range]::-moz-range-track {
+    background-color: #63cc87;
+}
+
+input[type=range]::-moz-focus-inner {
+  outline: none;
+}
+
+.range_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #ff9400;
+    cursor: pointer;
+}
+
+.range_slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+    background: #ff9400;
+    cursor: pointer;
+}
+
+/*-----------------------------*/
