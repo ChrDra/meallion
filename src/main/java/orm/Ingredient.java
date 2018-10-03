@@ -115,7 +115,6 @@ public class Ingredient implements Serializable {
     @NotFound(action = NotFoundAction.IGNORE)
     private List<Ingredient> children;
 
-
     public Ingredient() {
     }
 
@@ -272,27 +271,25 @@ public class Ingredient implements Serializable {
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
-        str.append("{\"id\":\""+this.id+"\",");
-        str.append("\"name\":\""+this.name+"\",");
-        str.append("\"season\":\""+this.season+"\",");
-        str.append("\"durability\":\""+this.durability+"\",");
-        str.append("\"unit\":\""+this.unit+"\",");
-        str.append("\"friendly_unit\":\""+this.friendly_unit+"\",");
-        str.append("\"imgUrl\":\""+this.imgUrl+"\",");
-        str.append("\"min_amount\":\""+this.min_amount+"\",");
-        str.append("\"price\":\""+this.price+"\",");
-        str.append("\"ts\":\""+this.ts+"\",");
-        str.append("\"parent name\":\""+this.parent.name+"\"");
+        str.append("{\"id\":\"").append(this.id).append("\",");
+        str.append("\"name\":\"").append(this.name).append("\",");
+        str.append("\"season\":\"").append(this.season).append("\",");
+        str.append("\"durability\":\"").append(this.durability).append("\",");
+        str.append("\"unit\":\"").append(this.unit).append("\",");
+        str.append("\"friendly_unit\":\"").append(this.friendly_unit).append("\",");
+        str.append("\"imgUrl\":\"").append(this.imgUrl).append("\",");
+        str.append("\"min_amount\":\"").append(this.min_amount).append("\",");
+        str.append("\"price\":\"").append(this.price).append("\",");
+        str.append("\"ts\":\"").append(this.ts).append("\",");
+        str.append("\"parent name\":\"").append(this.parent.name).append("\"");
         str.append("\"children names\":[");
         for(int i=0; i<this.children.size();i++){
-            str.append("\""+this.children.get(i).name+"\"");
+            str.append("\"").append(this.children.get(i).name).append("\"");
             if(!(i+1>=this.children.size())){
                 str.append(",");
             }
-            
         }
         str.append("]}");
         return str.toString();
     }
-    
 }
