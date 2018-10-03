@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import orm.Ingredient;
 import orm.Recipe;
 import sql.SQL;
 import utils.Configs;
@@ -181,6 +182,25 @@ public class CookBook extends HttpServlet {
                 response.setContentType("text/html");
                 PrintWriter out = response.getWriter();
                 out.println("Echo Echo...");
+                out.close();
+                Log.wln("done.");
+            }
+            
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //PARAMETER: "getingredient" - Gives back an ingredient by id 
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            if(request.getParameter("getingredient")!=null){
+                Log.wdln("To execute CookBook request: parameter=\"getingredient\"");
+                
+                String ingredient_id_str = request.getParameter("getingredient");
+                int ingredient_id = Integer.parseInt(ingredient_id_str);
+                
+                List<Ingredient> ingredient_results = sql.getEM().createNamedQuery("Ingredient.findById",Ingredient.class).setParameter("id", ingredient_id).getResultList();
+                
+                response.setContentType("text/html");
+                PrintWriter out = response.getWriter();
+                out.println(ingredient_results.get(0));
                 out.close();
                 Log.wln("done.");
             }

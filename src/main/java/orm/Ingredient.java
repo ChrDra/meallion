@@ -8,21 +8,28 @@ package orm;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;    
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 /**
  *
@@ -100,6 +107,14 @@ public class Ingredient implements Serializable {
     @Column(name = "ts")
     @Temporal(TemporalType.TIMESTAMP)
     private Date ts;
+    @ManyToOne( cascade = { CascadeType.ALL } )
+    @JoinColumn(name = "parent_id")
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Ingredient parent;
+    @OneToMany(mappedBy = "parent")
+    @NotFound(action = NotFoundAction.IGNORE)
+    private List<Ingredient> children;
+
 
     public Ingredient() {
     }
@@ -256,7 +271,28 @@ public class Ingredient implements Serializable {
 
     @Override
     public String toString() {
-        return "orm.Ingredient[ id=" + id + " ]";
+        StringBuilder str = new StringBuilder();
+        str.append("{\"id\":\""+this.id+"\",");
+        str.append("\"name\":\""+this.name+"\",");
+        str.append("\"season\":\""+this.season+"\",");
+        str.append("\"durability\":\""+this.durability+"\",");
+        str.append("\"unit\":\""+this.unit+"\",");
+        str.append("\"friendly_unit\":\""+this.friendly_unit+"\",");
+        str.append("\"imgUrl\":\""+this.imgUrl+"\",");
+        str.append("\"min_amount\":\""+this.min_amount+"\",");
+        str.append("\"price\":\""+this.price+"\",");
+        str.append("\"ts\":\""+this.ts+"\",");
+        str.append("\"parent name\":\""+this.parent.name+"\"");
+        str.append("\"children names\":[");
+        for(int i=0; i<this.children.size();i++){
+            str.append("\""+this.children.get(i).name+"\"");
+            if(!(i+1>=this.children.size())){
+                str.append(",");
+            }
+            
+        }
+        str.append("]}");
+        return str.toString();
     }
     
 }
