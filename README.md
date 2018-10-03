@@ -65,9 +65,3 @@ The method SearchEngine.IndexAll() downloads the entire database and reindexes i
 1. In the resources folder, make sure the persistence.xml file contains the content of the file: persistence_FOR LOCAL USE.xml.
 2. copy the meallion.conf file into the WEB-INF folder
 3. Now meallion should run on local machine, connecting to meallion.de mySQL and Solr.
-
-meallion.conf content:
--
-solr_url http://meallion.de:8983/solr/meallion
-solr_max_results 200
--
