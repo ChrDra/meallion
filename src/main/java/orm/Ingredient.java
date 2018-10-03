@@ -281,7 +281,7 @@ public class Ingredient implements Serializable {
         str.append("\"min_amount\":\"").append(this.min_amount).append("\",");
         str.append("\"price\":\"").append(this.price).append("\",");
         str.append("\"ts\":\"").append(this.ts).append("\",");
-        str.append("\"parent name\":\"").append(this.parent.name).append("\"");
+        str.append("\"parent name\":\"").append(this.parent.name).append("\",");
         str.append("\"children names\":[");
         for(int i=0; i<this.children.size();i++){
             str.append("\"").append(this.children.get(i).name).append("\"");
