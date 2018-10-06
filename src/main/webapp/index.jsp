@@ -224,7 +224,14 @@
                 
                 imagesLoaded( container, function( instance ) {
                     var msnry = new Masonry( container, {
-                        itemSelector: '.portfolio-element-placeholder'
+                        itemSelector: '.portfolio-element-placeholder',
+                        isAnimated: true,
+                        transitionDuration: '0.8s',
+                        animationOptions: {
+                            duration: 5000,
+                            easing: 'linear',
+                            queue: false
+                        }
                     });  
                 });
             }

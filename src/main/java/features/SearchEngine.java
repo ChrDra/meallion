@@ -186,32 +186,32 @@ public class SearchEngine {
             }else{
                 query_string_builder.append("*:*");
             }
-            Log.wdln("Solr search string = "+query_string_builder);
+            Log.debug_wdln("Solr search string = "+query_string_builder);
             
             SolrQuery query = new SolrQuery();
             query.setQuery(query_string_builder.toString());
             
             //add recipe filter
-            Log.wdln("Set recipe filter");
-                query.addFilterQuery("type:recipe");
+            Log.debug_wdln("Set recipe filter");
+            query.addFilterQuery("type:recipe");
             
             //add budget filter
-            Log.wdln("Set budget filter from 0 to "+this.budget);
+            Log.debug_wdln("Set budget filter from 0 to "+this.budget);
             query.addFilterQuery("budget:[0.0 TO "+this.budget+"]");
             
             //add time filter
-            Log.wdln("Set prep_time filter from 0 to "+this.time);   
+            Log.debug_wdln("Set prep_time filter from 0 to "+this.time);   
             query.addFilterQuery("prep_time:[0 TO "+this.time+"]");
             
             //add veggie filter
             if(this.veggie.equals("true")){
-                Log.wdln("Set vegetarian filter");
+                Log.debug_wdln("Set vegetarian filter");
                 query.addFilterQuery("veggie:"+this.veggie);
             }
             
             //add vegan filter
             if(this.veggie.equals("true")){
-                Log.wdln("Set vegan filter");
+                Log.debug_wdln("Set vegan filter");
                 query.addFilterQuery("vegan:"+this.vegan);
             }
             
@@ -225,7 +225,7 @@ public class SearchEngine {
             QueryResponse response = client.query(query);
             SolrDocumentList results = response.getResults();
             
-            Log.wdln("Number of Solr results: "+results.size());
+            Log.debug_wdln("Number of Solr results: "+results.size());
             
             if(!results.isEmpty()){
             
@@ -266,7 +266,7 @@ public class SearchEngine {
                 return sr_ok;
 
             }else{
-                Log.wdln("Solr found zero search results.");
+                Log.debug_wdln("Solr found zero search results.");
                 //return zero
                 SearchResults sr_zero = new SearchResults();
                 sr_zero.SetZero();
@@ -331,28 +331,28 @@ public class SearchEngine {
             }else{
                 query_string_builder.append("*:*");
             }
-            Log.wdln("Solr search string = "+query_string_builder);
+            Log.debug_wdln("Solr search string = "+query_string_builder);
             
             SolrQuery query = new SolrQuery();
             query.setQuery(query_string_builder.toString());
             
             //add mealplan filter
-            Log.wdln("Set mealplan filter");
+            Log.debug_wdln("Set mealplan filter");
             query.addFilterQuery("type:mealplan");
             
             //add budget filter
-            Log.wdln("Set budget filter from 0 to "+this.budget);
+            Log.debug_wdln("Set budget filter from 0 to "+this.budget);
             query.addFilterQuery("budget:[0.0 TO "+this.budget+"]");
             
             //add veggie filter
             if(this.veggie.equals("true")){
-                Log.wdln("Set vegetarian filter");
+                Log.debug_wdln("Set vegetarian filter");
                 query.addFilterQuery("veggie:"+this.veggie);
             }
             
             //add vegan filter
             if(this.veggie.equals("true")){
-                Log.wdln("Set vegan filter");
+                Log.debug_wdln("Set vegan filter");
                 query.addFilterQuery("vegan:"+this.vegan);
             }
             
@@ -366,7 +366,7 @@ public class SearchEngine {
             QueryResponse response = client.query(query);
             SolrDocumentList results = response.getResults();
             
-            Log.wdln("Number of Solr results: "+results.size());
+            Log.debug_wdln("Number of Solr results: "+results.size());
             
             if(!results.isEmpty()){
             
@@ -376,35 +376,36 @@ public class SearchEngine {
                     Log.wdln("create new temp mealplan:");
                     MealPlan temp_mealplan = new MealPlan(this.sql);
                     
-                    Log.wdln("id:"+results.get(i).getFirstValue("mealplan_id").toString());
+                    Log.debug_wdln("building mealplan from search results: ");
+                    Log.debug_wdln("id:"+results.get(i).getFirstValue("mealplan_id").toString());
                     temp_mealplan.setId(Integer.parseInt(results.get(i).getFirstValue("mealplan_id").toString()));
-                    Log.wdln("budget: "+results.get(i).getFirstValue("budget"));
+                    Log.debug_wdln("budget: "+results.get(i).getFirstValue("budget"));
                     temp_mealplan.setTransient_price(Double.parseDouble(results.get(i).getFirstValue("budget").toString()));
-                    Log.wdln("veggie:"+results.get(i).getFirstValue("veggie"));
+                    Log.debug_wdln("veggie:"+results.get(i).getFirstValue("veggie"));
                     temp_mealplan.setTransient_vegetarian(Boolean.parseBoolean(results.get(i).getFirstValue("veggie").toString()));
-                    Log.wdln("vegan:"+results.get(i).getFirstValue("vegan"));
+                    Log.debug_wdln("vegan:"+results.get(i).getFirstValue("vegan"));
                     temp_mealplan.setTransient_vegan(Boolean.parseBoolean(results.get(i).getFirstValue("vegan").toString()));
-                    Log.wdln("descr: "+results.get(i).getFirstValue("descr"));
+                    Log.debug_wdln("descr: "+results.get(i).getFirstValue("descr"));
                     temp_mealplan.setDescr(results.get(i).getFirstValue("descr").toString());
-                    Log.wdln("keyword:"+results.get(i).getFirstValue("keyword"));
+                    Log.debug_wdln("keyword:"+results.get(i).getFirstValue("keyword"));
                     temp_mealplan.setKeyword(results.get(i).getFirstValue("keyword").toString());
-                    Log.wdln("name:"+results.get(i).getFirstValue("name"));
+                    Log.debug_wdln("name:"+results.get(i).getFirstValue("name"));
                     temp_mealplan.setName(results.get(i).getFirstValue("name").toString());
-                    Log.wdln("img_urls:"+results.get(i).getFirstValue("img_urls"));
+                    Log.debug_wdln("img_urls:"+results.get(i).getFirstValue("img_urls"));
                     temp_mealplan.setImg_urls(results.get(i).getFirstValue("img_urls").toString());
                     
                     results_mealplans.add(temp_mealplan);
-                    Log.wdln("result mealplan added to results list");
+                    Log.debug_wdln("result mealplan added to results list");
                 }
                     Log.wdln("return results size: "+results_mealplans.size());
                 //return ok
                 SearchResults sr_ok = new SearchResults();
                 sr_ok.SetMealPlansOnly(results_mealplans,results_mealplans.size());
-                    Log.wdln("return results list");
+                    Log.debug_wdln("return results list");
                 return sr_ok;
 
             }else{
-                Log.wdln("Solr found zero search results.");
+                Log.debug_wdln("Solr found zero search results.");
                 //return zero
                 SearchResults sr_zero = new SearchResults();
                 sr_zero.SetZero();
