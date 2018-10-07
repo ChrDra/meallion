@@ -226,13 +226,18 @@
                     var msnry = new Masonry( container, {
                         itemSelector: '.portfolio-element-placeholder',
                         isAnimated: true,
-                        transitionDuration: '0.8s',
+                        resize: true,
+                        originLeft: true,
+                        transitionDuration: '1.2s',
                         animationOptions: {
                             duration: 5000,
                             easing: 'linear',
                             queue: false
                         }
-                    });  
+                    });
+                    
+                    $("#offering_waterfall").css({'display':'block'});
+                    msnry.layout();
                 });
             }
             

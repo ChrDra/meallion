@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import orm.MealPlan;
 import sql.SQL;
+import utils.HttpResponder;
 import utils.Log;
 
 /**
@@ -134,6 +135,8 @@ public class handler_Menu {
         }catch(IOException e){
             Log.eln("in Menu: IOException: "+e);
             Log.eln("in Menu: IOException: "+e.getLocalizedMessage());
+            RequestDispatcher rd = request.getRequestDispatcher("dispatch_ooops.jsp");
+            rd.include(request, response);
         }catch(NullPointerException e){
             Log.eln("in Menu: SQLException "+e);
             Log.eln("in Menu: SQLException "+e.getLocalizedMessage());

@@ -54,6 +54,11 @@
 
 #offering_placeholder{
     margin-bottom: 10px;
+
+}
+
+#offering_waterfall{
+    display: none;   
 }
 
 #uploadbutton{

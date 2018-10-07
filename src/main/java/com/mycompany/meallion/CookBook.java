@@ -20,6 +20,7 @@ import orm.Ingredient;
 import orm.Recipe;
 import sql.SQL;
 import utils.Configs;
+import utils.HttpResponder;
 import utils.Log;
 import utils.RecipeBuilder;
 import utils.RecipeStep;
@@ -162,14 +163,21 @@ public class CookBook extends HttpServlet {
             if(request.getParameter("clear")!=null){
                 Log.wdln("To execute CookBook request: parameter=\"clear\"");
                 Log.wd(("Clearing the cache/entity manager..."));
-                ///this.sql.getEM().clear();
-                //this.sql.getEM().getEntityManagerFactory().getCache().evictAll();
-                //this.sql.ClearCache();
+                
+                /**
+                * This does not seem to work:
+                * 
+                * this.sql.getEM().clear();
+                * this.sql.getEM().getEntityManagerFactory().getCache().evictAll();
+                * this.sql.ClearCache();
+                * 
+                */
+                
                 //very lame but only stable solution by now:
                 this.sql.getEM().close();
                 this.sql = new SQL();
-                
                 Log.wln("cache/entity manager cleared.");
+                HttpResponder.print(response, "succcess");
             }
             
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -179,10 +187,7 @@ public class CookBook extends HttpServlet {
             if(request.getParameter("echo")!=null){
                 Log.wdln("To execute CookBook request: parameter=\"echo\"");
                 Log.w(("Echoing..."));
-                response.setContentType("text/html");
-                PrintWriter out = response.getWriter();
-                out.println("Echo Echo...");
-                out.close();
+                HttpResponder.print(response, "echo echo...");
                 Log.wln("done.");
             }
             
@@ -199,9 +204,7 @@ public class CookBook extends HttpServlet {
                 List<Ingredient> ingredient_results = sql.getEM().createNamedQuery("Ingredient.findById",Ingredient.class).setParameter("id", ingredient_id).getResultList();
                 
                 response.setContentType("text/html");
-                PrintWriter out = response.getWriter();
-                out.println(ingredient_results.get(0));
-                out.close();
+                HttpResponder.print(response, ingredient_results.get(0));
                 Log.wln("done.");
             }
             
@@ -216,11 +219,7 @@ public class CookBook extends HttpServlet {
                 //this function at first clears the entire Solr document base. Then creates it from scratch
                 this.searchengine.IndexAll();
                 
-                response.setContentType("text/html");
-                PrintWriter out = response.getWriter();
-                out.println("Reindexed!");
-                out.close();
-                
+                HttpResponder.print(response, "reindexed!");
                 Log.wdln("Reindexed.");
             }
             
@@ -231,25 +230,28 @@ public class CookBook extends HttpServlet {
             if(request.getParameter("getallsessionmealplans")!=null){
                 Log.wdln("To execute CookBook request: parameter=\"getallsessionmealplans\"");
                 
-                response.setContentType("text/html");
-                PrintWriter out = response.getWriter();
+                StringBuilder response_string = new StringBuilder(); 
                 
                 MealPlan custom_mealplan = (MealPlan) request.getSession().getAttribute("custom_mealplan"); 
                 
-                out.println("<br>-----------------<br>");
-                out.println("CUSTOM MEALPLAN (isEmtpy:"+custom_mealplan.IsEmpty()+"):<br>");
-                out.println(custom_mealplan);
-                out.println("<br>-----------------<br>");
+                response_string.append("CUSTOM_MEALPAN (isEmtpy: ").append(custom_mealplan.IsEmpty()).append(")<br>");
+                response_string.append("---------------").append("<br>");
+                response_string.append(custom_mealplan);
+                response_string.append("---------------").append("<br>");
                 
                 Enumeration attributeNames = request.getSession().getAttributeNames();
                 while (attributeNames.hasMoreElements()) {
                     MealPlan saved_mealplan = (MealPlan) request.getSession().getAttribute((String)attributeNames.nextElement());
-                    out.println("<br>-----------------<br>");
-                    out.println("SAVED MEALPLAN ["+saved_mealplan.getKeyword()+"]<br>");
-                    out.println(saved_mealplan);
+                    
+                    response_string.append("MEALPAN ")
+                            .append(saved_mealplan.getKeyword())
+                            .append("").append("(isEmtpy: ")
+                            .append(saved_mealplan.IsEmpty()).append(")<br>");
+                    response_string.append("---------------").append("<br>");
+                    response_string.append(saved_mealplan);
                 }
-                out.println("<br>-----------------<br>");
-                out.close();
+                response_string.append("---------------").append("<br>");
+                HttpResponder.print(response, response_string);
                 Log.wln("All session mealplans showed.");
             }
             
@@ -260,8 +262,6 @@ public class CookBook extends HttpServlet {
             if(request.getParameter("heap")!=null){
                 Log.wdln("To execute CookBook request: parameter=\"heap\"");
                 Log.wd("Getting Heap information...");
-                response.setContentType("text/html");
-                PrintWriter out = response.getWriter();
                 
                 //All values returned in byte
                 
@@ -280,11 +280,15 @@ public class CookBook extends HttpServlet {
                 Calling the gc method may result in increasing the value returned by freeMemory.
                 */
                 long free = Runtime.getRuntime().freeMemory();
-                out.println("Current heap:");
-                out.println("Max: "+max+";");
-                out.println("Used: "+total+";");
-                out.println("Free: "+free+";");
-                out.close();
+                
+                StringBuilder response_string = new StringBuilder(); 
+                response_string.append("Current heap:").append("<br>");
+                response_string.append("Max: "+max+";").append("<br>");
+                response_string.append("Used: "+total+";").append("<br>");
+                response_string.append("Free: "+free+";").append("<br>");
+                
+                HttpResponder.print(response, response_string);
+                
                 Log.wln("done.");
             }
             
@@ -314,13 +318,11 @@ public class CookBook extends HttpServlet {
                 request.setAttribute("mealplan", request.getSession().getAttribute("custom_mealplan"));
                 
                 //Dispatch recipe offerings
-                request.getRequestDispatcher("dispatch_recipes_offering.jsp");
-                RequestDispatcher rd = request.getRequestDispatcher("dispatch_recipes_offering.jsp");
-                rd.include(request, response);
+                HttpResponder.dispatch(request, response, "dispatch_recipes_offering.jsp");
             }
             
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            //Command 2: Menu selection and portions changes 
+            //Command 2: portions changes in a menu
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             if(command==2){ 
@@ -365,7 +367,6 @@ public class CookBook extends HttpServlet {
                         request.setAttribute("mealplan", mealplan_to_change);
                         RequestDispatcher rd = request.getRequestDispatcher("dispatch_ingredients.jsp");
                         rd.include(request, response);
-                        
                     }
                 }
                 
@@ -409,14 +410,12 @@ public class CookBook extends HttpServlet {
                         out.close();
                     }else{
                         this.sql.getEM().getTransaction().rollback();
-                        response.setContentType("text/html");
-                        PrintWriter out = response.getWriter();
-                        out.print("name_already_exists");
-                        out.close();
+                        HttpResponder.print(response,"name_already_exists");
                     }
                 }catch(NullPointerException e){
                     Log.edln("in Cookbook: NullPointerException while trying to save mealplan: "+e);
                     Log.edln("in Cookbook: NullPointerException while trying to save mealplan: "+e.getLocalizedMessage());
+                    HttpResponder.print(response,"error");
                 }   
             }
             
@@ -440,18 +439,22 @@ public class CookBook extends HttpServlet {
         }catch(IOException e){
             Log.edln("in Cookbook: IOException: "+e);
             Log.edln("in Cookbook: IOException: "+e.getMessage());
+            HttpResponder.print(response,"error");
         }catch(NullPointerException e){
             Log.edln("in Cookbook: NullPointerException: "+e);
             Log.edln("in Cookbook: NullPointerException: "+e.getMessage());
+            HttpResponder.print(response,"error");
         }catch(SQLException e){
             Log.edln("in Cookbook: SQLException "+e);
             Log.edln("in Cookbook: SQLException "+e.getMessage());
+            HttpResponder.print(response,"error");
             Log.wd("Re-connecting to database due to error..");
             sql = new SQL();
             Log.wln("done.");
         }catch(Exception e){
             Log.edln("in Cookbook: unknown Exception: "+e);
             Log.edln("in Cookbook: unknown Exception: "+e.getMessage());
+            HttpResponder.print(response,"error");
         }
     }
 
