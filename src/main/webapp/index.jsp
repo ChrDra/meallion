@@ -102,7 +102,7 @@
             </div>
             
             <div class="row toggle_section">
-                <div class="col-lg-3 col-md-6 col-sm-12 toggle_section_element_placeholder">
+                <div class="col-lg-3 col-md-6 col-sm-12 toggle_section_element_placeholder" id="budget_chooser_box">
                     <div class="green-border toggle_section_element">
                         <div class="toggle_section_element_text toggle_section_element_content">Budget</div>
                         <div class="slidecontainer toggle_section_range_slider toggle_section_element_content">

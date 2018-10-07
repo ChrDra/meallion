@@ -1,3 +1,8 @@
+
+/*
+ * user filter variables for selections:
+ */
+
 var budget = 0;
 var time = 0;
 var veggie = "false";
@@ -5,6 +10,39 @@ var vegan = "false";
 var tags = "";
 
 var command = 1;
+
+/*
+ * Addressable html divs:
+ * 
+ * #offering_placeholder
+ *  holds the offering content. Before content is loaded, it holds a loading gif
+ * 
+ * #search_menus_button
+ * #search_recipes_button
+ * #main_search_input_button
+ * #tags_input
+ * 
+ * #budget_chooser_box
+ * #control_output_budget
+ * #toggle_section_element_budget
+ * 
+ * #time_chooser_box
+ * #control_output_time
+ * #toggle_section_element_time
+ * 
+ * #toggle_section_element_veggie
+ * #toggle_section_element_vegan
+ * 
+ * #mealplan_save_section_name_exists_already
+ * 
+ * #contact_mail_input
+ * 
+ * #ingredient_section
+ * 
+ * #portions_select_button_number
+ * 
+ */
+
 
 function set_default_request(){
     budget = 10000;
