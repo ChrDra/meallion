@@ -234,9 +234,9 @@
                             easing: 'linear',
                             queue: false
                         }
+                        
                     });
                     
-                    $("#offering_waterfall").css({'display':'block'});
                     msnry.layout();
                 });
             }
