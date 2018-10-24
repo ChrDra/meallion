@@ -20,7 +20,11 @@
     min-height: 100px;
     border-radius: 5px;
     overflow: hidden;
-    border: 1px solid #ff9400;
+    border: 1px solid #63cc87;
+}
+
+.portfolio-element:hover {
+    transform: scale(1.05);
 }
 
 .mealplan-portfolio-element{
@@ -73,7 +77,6 @@
 .portfolio-element-text{
     float: bottom;
     background-color: #ffffff;
-    height: 96px;
     width: 100%;
     text-align: left;
     padding: 4px;

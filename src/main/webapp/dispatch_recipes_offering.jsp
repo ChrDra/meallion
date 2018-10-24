@@ -60,9 +60,6 @@ script in file as needed in the loop
                                 <div class="portfolio-element-text-header">
                                     <b><font size="3"> <% out.print(r.getName()); %></font></b>
                                 </div>
-                                <div class="portfolio-element-text-descr">
-                                    <i><font size="2"><% out.print(r.getShort_descr()); %></font></i>
-                                </div>
                             </div>
                         </a> 
                     </div>
