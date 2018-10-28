@@ -17,6 +17,8 @@
 <!--[if IE 7]>
 <link href="css/font-awesome-ie7.css" rel="stylesheet">
 <![endif]-->
+<!-- font- signika medium -->
+<link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
 
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.css" rel="stylesheet">

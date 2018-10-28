@@ -107,6 +107,10 @@
     width: 100%;
     height: 100%;
     filter: alpha(opacity=80); /* For IE8 and earlier */
+    filter: alpha(opacity=80);
+    -webkit-filter: contrast(1.1) saturate(0.8) sepia(.4);
+    filter: contrast(1.1) saturate(0.8) sepia(.4);
+
 }
 
 .carousel_image{
