@@ -369,7 +369,6 @@ public class CookBook extends HttpServlet {
                         rd.include(request, response);
                     }
                 }
-                
             }
             
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -434,6 +433,32 @@ public class CookBook extends HttpServlet {
                 Log.debug_wdln("To dispatch offering JSP.");
                 RequestDispatcher rd = request.getRequestDispatcher("dispatch_mealplans_offering.jsp");
                 rd.include(request, response);
+            }
+            
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //Command 6: Recipe ingredients list request 
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            if(command==6){
+                Log.wdln("To execute CookBook command 6: Recipe ingredients list request.");
+                
+                String recipe_keyword = request.getParameter("keyword"); 
+                Log.debug_w("Query meal from database: "+recipe_keyword);
+                
+                List<Recipe> recipe_results = sql.getEM().createNamedQuery("Recipe.findByKeyword",Recipe.class).setParameter("keyword", recipe_keyword).getResultList();
+                Log.debug_wln("found "+recipe_results.size()+" results");
+                
+                Recipe r = recipe_results.get(0);
+                
+                request.setAttribute("recipe", r);
+
+                if(r!=null){
+                    RequestDispatcher rd = request.getRequestDispatcher("dispatch_ingredients_cart.jsp");
+                    rd.include(request, response);
+                }else{
+                    RequestDispatcher rd = request.getRequestDispatcher("dispatch_notfound.jsp");
+                    rd.include(request, response);
+                }
             }
             
         }catch(IOException e){
