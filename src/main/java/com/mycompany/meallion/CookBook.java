@@ -13,6 +13,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -101,13 +102,16 @@ public class CookBook extends HttpServlet {
             
             response.setContentType("text/html;charset=UTF-8");
             response.addHeader("Access-Control-Allow-Origin", "*");
+            response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+            response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+            response.addHeader("Access-Control-Max-Age", "1728000");
             
             //Check if user session already has a "custom_mealplan" object. If not, create one:
             Log.wd("Check existence of custom_mealplan object..");
             if(request.getSession().getAttribute("custom_mealplan")==null){
                 
                 Log.w("no custom_mealplan available so far. Create new custom_mealplan object and store in HttpSession.");
-                
+                 
                 MealPlan menu = new MealPlan(this.sql);
                 request.getSession().setAttribute("custom_mealplan", menu);
                 
@@ -153,6 +157,28 @@ public class CookBook extends HttpServlet {
                     RequestDispatcher rd = request.getRequestDispatcher("dispatch_notfound.jsp");
                     rd.include(request, response);
                 }
+            }
+            
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //PARAMETER: "embed_button" - Returns a button, which adds 1x the ingredients of recipe "keyword" to the Menu -----
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            if(request.getParameter("embed_button")!=null){
+                Log.wdln("To execute CookBook request: parameter=\"embed_button\"");
+                
+                int recipeid = Integer.valueOf(request.getParameter("recipeid"));
+                int portions = Integer.valueOf(request.getParameter("portions"));
+                
+                int[] id_portions_set = new int[2];
+                id_portions_set[0] = recipeid;
+                id_portions_set[1] = portions;
+
+                Log.debug_w("Query meal from database: "+recipeid);
+                
+                request.setAttribute("id_portions_set", id_portions_set);
+
+                RequestDispatcher rd = request.getRequestDispatcher("dispatch_embed_button.jsp");
+                rd.include(request, response);
             }
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
