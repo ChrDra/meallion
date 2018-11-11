@@ -111,8 +111,6 @@ public class handler_Menu {
                 
                 MealPlan current_mealplan = (MealPlan) request.getSession().getAttribute("custom_mealplan");
                 
-                if(current_mealplan==null) Log.w("CUSTOMR IS NULL!!");
-                
                 if((!current_mealplan.IsEmpty())){
                     current_mealplan.UpdateIngredientAmounts();
                     request.setAttribute("mealplan", current_mealplan);
@@ -128,7 +126,7 @@ public class handler_Menu {
             
             if(request.getParameter("save")!=null){
                 MealPlan tosave = (MealPlan) request.getSession().getAttribute("current_mealplan");
-                tosave.SavetoDB();
+                tosave.SavetoDB(); 
             }
             
             

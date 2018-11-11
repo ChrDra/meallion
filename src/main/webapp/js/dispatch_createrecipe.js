@@ -11,7 +11,7 @@ var quill = new Quill('#editor-container', {
       []
     ]
   },
-  placeholder: 'Füge hier die Schritte und dazugehörigen Bilder ein',
+  placeholder: 'F&uuml;ge hier die Schritte und dazugeh&ouml;rigen Bilder ein',
   theme: 'snow'  // or 'bubble'
 });
 

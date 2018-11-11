@@ -71,7 +71,7 @@ none
                             <% } else { out.print("<br>"); } %>
 
                         <div class="ingredient-element-img-placeholder">
-                            <div class="ingredient-element-img" style="background-image: url('<% out.print(current_ir.getIngredient().getImgUrl()); %>')"></div>
+                            <div class="ingredient-element-img ingredients_animation-target" style="background-image: url('<% out.print(current_ir.getIngredient().getImgUrl()); %>')"></div>
                         </div>
                         <div class="ingredient-element-price">
                             &#8364; <span class="ingredient-price"><% out.print(current_ir.getIngredient().getPriceString(current_ir.getAmount()));%></span>

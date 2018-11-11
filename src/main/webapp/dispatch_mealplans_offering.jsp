@@ -31,7 +31,7 @@ script in file as needed in the loop
     %>
         <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                    <h1>Ausgewählte Menüs</h1><br>
+                    <h1>Ausgew&auml;hlte Men&uuml;s</h1><br>
                 </div>
         </div>
     
@@ -116,7 +116,7 @@ script in file as needed in the loop
                     
                     <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <h1>Leider keine Menüs gefunden...</h1><br>
+                                <h1>Leider keine Men&uuml;s gefunden...</h1><br>
                             </div>
                     </div>
                     

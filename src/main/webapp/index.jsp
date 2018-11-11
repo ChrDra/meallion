@@ -23,7 +23,7 @@
                             <img src="/images/elements/mobile_carousel-small.jpg">
                         </video>
                         <div class="carousel-caption">
-                            <h2><span class="carousel-batch">Dein tägliches Kochbuch.</span></h2>
+                            <h2><span class="carousel-batch">Dein t&auml;gliches Kochbuch.</span></h2>
                         </div>
                     </div>
                     <div>
@@ -32,7 +32,7 @@
                             <img src="/images/elements/mobile_carousel-small.jpg">
                         </video>
                         <div class="carousel-caption">
-                            <h2><span class="carousel-batch">Stelle Dein individuelles Menü zusammen.</span></h2>
+                            <h2><span class="carousel-batch">Stelle Dein individuelles Men&uuml; zusammen.</span></h2>
                         </div>
                     </div>
                     <div>
@@ -41,7 +41,7 @@
                             <img src="/images/elements/mobile_carousel-small.jpg">
                         </video>
                         <div class="carousel-caption">
-                            <h2><span class="carousel-batch">Finde Deine perfekten Wochenmenüs.</span></h2>
+                            <h2><span class="carousel-batch">Finde Deine perfekten Wochenmen&uuml;s.</span></h2>
                         </div>
                     </div>
                 </div>
@@ -57,19 +57,19 @@
                     <div>
                         <div class="carousel_image" style="background-image:url('/images/slide/slide1.jpg');"></div>
                         <div class="carousel-caption">
-                            <h2><span class="carousel-batch">Dein tägliches Kochbuch.</span></h2>
+                            <h2><span class="carousel-batch">Dein t&auml;gliches Kochbuch.</span></h2>
                         </div>
                     </div>
                     <div>
                         <div class="carousel_image" style="background-image:url('/images/slide/slide1.jpg');"></div>
                         <div class="carousel-caption">
-                            <h2><span class="carousel-batch">Stelle Dein individuelles Menü zusammen.</span></h2>
+                            <h2><span class="carousel-batch">Stelle Dein individuelles Men&uuml; zusammen.</span></h2>
                         </div>
                     </div>
                     <div>
                         <div class="carousel_image" style="background-image:url('/images/slide/slide1.jpg');"></div>
                         <div class="carousel-caption">
-                            <h2><span class="carousel-batch">Finde Deine perfekten Wochenmenüs.</span></h2>
+                            <h2><span class="carousel-batch">Finde Deine perfekten Wochenmen&uuml;s.</span></h2>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                 <div class="col-lg-3 col-md-2"></div>
                 <div class="col-lg-6 col-md-8 col-sm-12 green-border">
                     <button type="button" id="search_recipes_button" class="recipes_menu_switch_button btn btn-primary">Rezepte</button>
-                    <button type="button" id="search_menus_button" class="recipes_menu_switch_button btn btn-primary">Menüs</button>
+                    <button type="button" id="search_menus_button" class="recipes_menu_switch_button btn btn-primary">Men&uuml;s</button>
                 </div>
             </div>
             
@@ -261,7 +261,7 @@
                 
                 if (navigator.appName == 'Microsoft Internet Explorer' ||  !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv:11/)) || (typeof $.browser !== "undefined" && $.browser.msie == 1)){
                     bootbox.alert({
-                        message: 'Du verwendest Internet Explorer. Wir können nicht garantieren, dass der Seiteninhalt korrekt dargestellt wird. Wir empfehlen daher Chrome oder Firefox.',
+                        message: 'Du verwendest Internet Explorer. Wir k&ouml;nnen nicht garantieren, dass der Seiteninhalt korrekt dargestellt wird. Wir empfehlen daher Chrome oder Firefox.',
                         className : "recipe_img_popup",
                         size: 'large',
                         buttons: {

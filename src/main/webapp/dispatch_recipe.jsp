@@ -70,13 +70,13 @@ script is needed in here
                                     <div class="recipe-headline-features-inmenu" data-selected="false">
                                         Hinzufuegen
                                         <div id="recipe-feature-<% out.print(r.getId()); %>" class="recipe-headline-features-inmenu-img-placeholder center">
-                                            <img id="recipe-headline-features-inmenu-img" class="recipe-headline-features-inmenu-img" src="/images/elements/chef-hat.svg">
+                                            <img id="recipe-headline-features-inmenu-img" class="recipe-headline-features-inmenu-img" src="https://www.meallion.de/images/elements/chef-hat.svg">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <button id="portions_select_button" class="recipe-headline-features-portionselector btn btn-secondary dropdown-toggle selection-style" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Wähle Portionen<br><span id="portions_select_button_number">1<span class="caret"></span>
+                                            W&auml;hle Portionen<br><span id="portions_select_button_number">1<span class="caret"></span>
                                     </button></span>
                                     <ul id="portion_select_dropdown_div" class="dropdown-list dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <li id="portions_select_1"><span class="drop_button">1</li>
@@ -121,7 +121,7 @@ script is needed in here
                                 
                                 
                                 <div class="ingredient-element-img-placeholder">
-                                    <div class="ingredient-element-img" style="background-image: url('<% out.print(current_ir.getIngredient().getImgUrl()); %>')"></div>
+                                    <div class="ingredient-element-img ingredients_animation-target" style="background-image: url('<% out.print(current_ir.getIngredient().getImgUrl()); %>')"></div>
                                 </div>
                                 <div class="ingredient-element-price">
                                     &#8364; <span class="ingredient-price"><% out.print(current_ir.getIngredient().getPriceString(current_ir.getAmount()));%></span>
@@ -219,7 +219,7 @@ script is needed in here
                         backdrop: true,
                         buttons: {
                             ok: {
-                                label: "Zurück",
+                                label: "Zur&uuml;ck",
                                 callback: function(){
                                 }
                             }
@@ -234,10 +234,10 @@ script is needed in here
                         if(selected){
                         Log.wdln("Recipe found in current mealplan!");
                 %>      
-                        $("#recipe-headline-features-inmenu-img").attr('src','/images/elements/chef-hat_selected.svg');
+                        $("#recipe-headline-features-inmenu-img").attr('src','https://www.meallion.de/images/elements/chef-hat_selected.svg');
                         $("#recipe-feature-<% out.print(r.getId()); %>").data("selected",true);
                         
-                        $("#recipe-feature-<% out.print(r.getId()); %>").find('.recipe-feature-img').attr('src','/images/elements/chef-hat_selected.svg');
+                        $("#recipe-feature-<% out.print(r.getId()); %>").find('.recipe-feature-img').attr('src','https://www.meallion.de/images/elements/chef-hat_selected.svg');
                         $("#recipe-feature-<% out.print(r.getId()); %>").data("selected",true);
                 <%
                         }else{
@@ -258,7 +258,7 @@ script is needed in here
                         
                         //load dialog box
                         var dialog1 = bootbox.dialog({
-                            message: '<img class="dialog_box_spinner" src="/images/elements/Spinner-5.9s-200px.gif"> Wird entfernt..',
+                            message: '<img class="dialog_box_spinner" src="https://www.meallion.de/images/elements/Spinner-5.9s-200px.gif"> Wird entfernt..',
                             closeButton: false
                         });
                         var timeout = 1000; 
@@ -267,14 +267,14 @@ script is needed in here
                         }, timeout);    
                         // end load dialog box
                             
-                        $('#recipe-headline-features-inmenu-img').attr('src','/images/elements/chef-hat.svg');
+                        $('#recipe-headline-features-inmenu-img').attr('src','https://www.meallion.de/images/elements/chef-hat.svg');
                         $(this).data("selected",false);
                         trigger_menuchange(<% out.print(r.getId()); %>,"0","false","custom_mealplan",function(){});
                     }else{
                         
                         //load dialog box
                         var dialog1 = bootbox.dialog({
-                            message: '<img class="dialog_box_spinner" src="/images/elements/Spinner-5.9s-200px.gif"> Wird hinzugefügt..',
+                            message: '<img class="dialog_box_spinner" src="https://www.meallion.de/images/elements/Spinner-5.9s-200px.gif"> Wird hinzugef&uuml;gt..',
                             closeButton: false
                         });
                         var timeout = 1000; 
@@ -283,7 +283,7 @@ script is needed in here
                         }, timeout);    
                         // end load dialog box
                         
-                        $('#recipe-headline-features-inmenu-img').attr('src','/images/elements/chef-hat_selected.svg');
+                        $('#recipe-headline-features-inmenu-img').attr('src','https://www.meallion.de/images/elements/chef-hat_selected.svg');
                         $(this).data("selected",true);
                         trigger_menuchange(<% out.print(r.getId()); %>,"1","false","custom_mealplan",function(){});
                     }

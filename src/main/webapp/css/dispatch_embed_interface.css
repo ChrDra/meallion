@@ -1,0 +1,38 @@
+/* BEGIN INCREMETER
+*/
+.embed-container{
+    padding-top:65px;
+    height: 100%;
+}
+
+#amount_picker{
+    width: 120px;
+    margin: 3px;
+}
+
+#quantity{
+    text-align: center; 
+}
+
+#add_to_cart{
+    background-color: #afb8c6;
+    margin: 3px;
+}
+
+#add_to_cart:active{
+    background-color: #63cc87;
+}
+
+#add_to_cart:focus{
+    background-color: #63cc87;
+}
+
+.add_to_cart_button_ico{
+    width: 25px;
+    height: 25px;
+}
+
+.meallion_logo{
+    width: auto;
+    height: 40px;
+}

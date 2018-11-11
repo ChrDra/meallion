@@ -17,7 +17,7 @@ $(document).ready(function() {
           []
         ]
       },
-      placeholder: 'Gib hier eine Beschreibung Deines Menüs ein',
+      placeholder: 'Gib hier eine Beschreibung Deines Men&uuml;s ein',
       theme: 'snow'  // or 'bubble'
     });
     

@@ -93,12 +93,12 @@ public class SearchEngine {
         String serialized_tags = request.getParameter("tags");
         
         //kill umlauts
-        serialized_tags = serialized_tags.replaceAll("%C3%84","Ä");
-        serialized_tags = serialized_tags.replaceAll("%C3%96","Ö");
-        serialized_tags = serialized_tags.replaceAll("%C3%9C","Ü");
-        serialized_tags = serialized_tags.replaceAll("%C3%A4","ä");
-        serialized_tags = serialized_tags.replaceAll("%C3%B6","ö");
-        serialized_tags = serialized_tags.replaceAll("%C3%BC","ü");
+        serialized_tags = serialized_tags.replaceAll("%C3%84","&Auml;");
+        serialized_tags = serialized_tags.replaceAll("%C3%96","&Ouml;");
+        serialized_tags = serialized_tags.replaceAll("%C3%9C","&Uuml;");
+        serialized_tags = serialized_tags.replaceAll("%C3%A4","&auml;");
+        serialized_tags = serialized_tags.replaceAll("%C3%B6","&ouml;");
+        serialized_tags = serialized_tags.replaceAll("%C3%BC","&uuml;");
         serialized_tags = serialized_tags.replaceAll("%C3%9F","ß");
         serialized_tags = serialized_tags.replaceAll("%C3%89","É");
         serialized_tags = serialized_tags.replaceAll("%C3%A9","é");
@@ -430,7 +430,7 @@ public class SearchEngine {
     
     /**
      * Get latest results, which was created by MealPlans_Engine_Solr_1 or Recipes_Engine_Solr_1
-     * @return 
+     * @return
      */
     
     public SearchResults getResult() {

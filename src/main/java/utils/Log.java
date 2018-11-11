@@ -92,6 +92,12 @@ public final class Log {
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Debugging logs. To enable/disable --> uncomment/comment the content of the below 4 functions
+    //
+    // replace:
+    // /*comment line*/
+    // with:
+    // //comment line
+    //
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     /**
@@ -100,7 +106,7 @@ public final class Log {
      */
     
     public static void debug_wd(Object s){
-        //System.out.print(LocalDateTime.now()+": "+s);
+        /*comment line*/ System.out.print(LocalDateTime.now()+": "+s);
     }
     
     /**
@@ -109,7 +115,7 @@ public final class Log {
      */
     
     public static void debug_wdln(Object s){
-        //System.out.println(LocalDateTime.now()+": "+s);
+        /*comment line*/ System.out.println(LocalDateTime.now()+": "+s);
     }
     
     /**
@@ -118,7 +124,7 @@ public final class Log {
      */
     
     public static void debug_w(Object s){
-        //System.out.print(s);
+        /*comment line*/ System.out.print(s);
     }
     
     /**
@@ -127,7 +133,7 @@ public final class Log {
      */
     
     public static void debug_wln(Object s){
-        //System.out.println(s);
+        /*comment line*/ System.out.println(s);
     }
     
     

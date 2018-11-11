@@ -12,14 +12,14 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.annotation.WebServlet; 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import orm.Ingredient;
-import orm.Recipe;
-import sql.SQL;
+import orm.Recipe; 
+import sql.SQL; 
 import utils.Configs;
 import utils.HttpResponder;
 import utils.Log;
@@ -32,13 +32,16 @@ import utils.RecipeStep;
  * @author chris
  */
 
-@WebServlet(name = "CookBook", urlPatterns = {"/CookBook","/Menu"})
-public class CookBook extends HttpServlet {
+@WebServlet(name = "CookBook", urlPatterns = {"/CookBook","/Menu","/Embed","/Examples"})
+public class CookBook extends HttpServlet{  
 
     //the SQL connection object
     private SQL sql;
         
     private handler_Menu handler_menu;
+    private handler_Embed handler_embed;
+    private handler_Examples handler_examples;
+    
     private SearchEngine searchengine;
 
     public CookBook() throws IOException {
@@ -63,6 +66,8 @@ public class CookBook extends HttpServlet {
             
             this.sql = new SQL();
             this.handler_menu = new handler_Menu(this.sql);
+            this.handler_embed = new handler_Embed(this.sql);
+            this.handler_examples = new handler_Examples(this.sql); 
             
             // Set config parameters:
             
@@ -125,7 +130,7 @@ public class CookBook extends HttpServlet {
             //PARAMETER: "recipe" - Get recipe keyword and open recipe -----
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             
-            if(request.getParameter("recipe")!=null){
+            if(request.getParameter("recipe")!=null){ 
                 Log.wdln("To execute CookBook request: parameter=\"recipe\"");
                 
                 String recipe_keyword = request.getParameter("recipe");
@@ -145,7 +150,7 @@ public class CookBook extends HttpServlet {
                     String recipe_json_manual = r.getBody();
 
                         List<RecipeStep> steps = RecipeBuilder.createRecipeList(recipe_json_manual);
-                        request.setAttribute("recipe", r);
+                        request.setAttribute("recipe", r); 
                         request.setAttribute("steps", steps);
                         request.setAttribute("mealplan", request.getSession().getAttribute("custom_mealplan"));
 
@@ -256,7 +261,7 @@ public class CookBook extends HttpServlet {
             if(request.getParameter("getallsessionmealplans")!=null){
                 Log.wdln("To execute CookBook request: parameter=\"getallsessionmealplans\"");
                 
-                StringBuilder response_string = new StringBuilder(); 
+                StringBuilder response_string = new StringBuilder();
                 
                 MealPlan custom_mealplan = (MealPlan) request.getSession().getAttribute("custom_mealplan"); 
                 
@@ -456,7 +461,7 @@ public class CookBook extends HttpServlet {
                 Log.debug_wdln("Cookbook: received search results: "+searchresult);
                 request.setAttribute("search_results", searchresult);
                 
-                Log.debug_wdln("To dispatch offering JSP.");
+                Log.debug_wdln("To dispatch offering JSP."); 
                 RequestDispatcher rd = request.getRequestDispatcher("dispatch_mealplans_offering.jsp");
                 rd.include(request, response);
             }
@@ -465,7 +470,7 @@ public class CookBook extends HttpServlet {
             //Command 6: Recipe ingredients list request 
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             
-            if(command==6){
+            if(command==6){ 
                 Log.wdln("To execute CookBook command 6: Recipe ingredients list request.");
                 
                 String recipe_keyword = request.getParameter("keyword"); 
@@ -497,7 +502,7 @@ public class CookBook extends HttpServlet {
             HttpResponder.print(response,"error");
         }catch(SQLException e){
             Log.edln("in Cookbook: SQLException "+e);
-            Log.edln("in Cookbook: SQLException "+e.getMessage());
+            Log.edln("in Cookbook: SQLException "+e.getMessage()); 
             HttpResponder.print(response,"error");
             Log.wd("Re-connecting to database due to error..");
             sql = new SQL();
@@ -528,6 +533,12 @@ public class CookBook extends HttpServlet {
         if(request.getRequestURI().endsWith("/Menu")){
             Log.wln("handing over request to Menu handler");
             this.handler_menu.processRequest(request, response);
+        }else if(request.getRequestURI().endsWith("/Embed")){
+            Log.wln("Handing over request to Embed handler");
+            this.handler_embed.processRequest(request, response);
+        }else if(request.getRequestURI().endsWith("/Examples")){
+            Log.wln("Handing over request to Examples handler");
+            this.handler_examples.processRequest(request, response);    
         }else{
             Log.wln("Handing over request to CookBook handler");
             processRequest(request, response);
@@ -555,6 +566,12 @@ public class CookBook extends HttpServlet {
         if(request.getRequestURI().endsWith("/Menu")){
             Log.wln("Handing over request to Menu handler");
             this.handler_menu.processRequest(request, response);
+        }else if(request.getRequestURI().endsWith("/Embed")){
+            Log.wln("Handing over request to Embed handler");
+            this.handler_embed.processRequest(request, response);
+        }else if(request.getRequestURI().endsWith("/Examples")){
+            Log.wln("Handing over request to Examples handler");
+            this.handler_examples.processRequest(request, response);
         }else{
             Log.wln("Handing over request to CookBook handler");
             processRequest(request, response);

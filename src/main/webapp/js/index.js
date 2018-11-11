@@ -18,7 +18,7 @@ $("#fileuploadform").change(function() {$("#submitfile").click();  });
 $("#fileuploadform").on('change', '#selectfile', function() {
     alert("wie oft");
     var data = new FormData(); // das ist unser Daten-Objekt ...
-    data.append('file', this.files[0]); // ... an die wir unsere Datei anhängen
+    data.append('file', this.files[0]); // ... an die wir unsere Datei anh&auml;ngen
     $.ajax({
     url: 'Upload', // Wohin soll die Datei geschickt werden?
     data: data,          // Das ist unser Datenobjekt.

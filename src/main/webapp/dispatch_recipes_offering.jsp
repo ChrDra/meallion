@@ -33,7 +33,7 @@ script in file as needed in the loop
     %>
         <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                    <h1>Ausgewählte Rezepte</h1><br>
+                    <h1>Ausgew&auml;hlte Rezepte</h1><br>
                 </div>
         </div>
     
@@ -113,7 +113,7 @@ script in file as needed in the loop
                         }else{
                             
                             var dialog1 = bootbox.dialog({
-                            message: '<img class="dialog_box_spinner" src="/images/elements/Spinner-5.9s-200px.gif"> Rezept wird hinzugefügt..',
+                            message: '<img class="dialog_box_spinner" src="/images/elements/Spinner-5.9s-200px.gif"> Rezept wird hinzugef&uuml;gt..',
                             closeButton: false
                             });
                             var timeout = 1000; 
