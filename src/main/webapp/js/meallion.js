@@ -58,7 +58,7 @@ function set_offering_wait_status(){
 
 function trigger_selection(callback){
     set_offering_wait_status();
-    $.ajax({url:"CookBook", data: {"command" : command,"budget" : budget,"time" : time,"veggie" : veggie,"vegan" : vegan,"tags" : tags}}).done(function(data){
+    $.ajax({url:"https://www.meallion.de/CookBook", data: {"command" : command,"budget" : budget,"time" : time,"veggie" : veggie,"vegan" : vegan,"tags" : tags}}).done(function(data){
             $('#offering_placeholder').html(data);
             if (!(callback === undefined)) callback();
     });

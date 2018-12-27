@@ -32,14 +32,14 @@ import utils.RecipeStep;
  * @author chris
  */
 
-@WebServlet(name = "CookBook", urlPatterns = {"/CookBook","/Menu","/Embed","/Examples"})
+@WebServlet(name = "CookBook", urlPatterns = {"/CookBook","/Menu","/embed/*","/Examples"})
 public class CookBook extends HttpServlet{  
 
     //the SQL connection object
     private SQL sql;
         
     private handler_Menu handler_menu;
-    private handler_Embed handler_embed;
+    private handler_embed handler_embed;
     private handler_Examples handler_examples;
     
     private SearchEngine searchengine;
@@ -66,7 +66,7 @@ public class CookBook extends HttpServlet{
             
             this.sql = new SQL();
             this.handler_menu = new handler_Menu(this.sql);
-            this.handler_embed = new handler_Embed(this.sql);
+            this.handler_embed = new handler_embed(this.sql);
             this.handler_examples = new handler_Examples(this.sql); 
             
             // Set config parameters:
@@ -78,11 +78,11 @@ public class CookBook extends HttpServlet{
             Log.wdln("Meallion config: solr_url="+solr_url);
             Log.wdln("Meallion config: solr_max_results="+solr_max_results);
             
-            Log.wdln("Meallion config: success.");
-            
             // End setting config parameters 
             
             this.searchengine = new SearchEngine(this.sql,solr_url,solr_max_results);
+            
+            Log.wdln("Meallion config: success.");
             
         }catch(FileNotFoundException fnfe){ 
             Log.edln("Meallion Config file could not be found: "+fnfe);
@@ -91,7 +91,7 @@ public class CookBook extends HttpServlet{
         }
     }
     
-    /**
+    /** 
      * The function catches all requests made to Servlet CookBook and performes switch-ifs of the various parameters (URL text parameters and commands)
      * @param request Current HTTP request
      * @param response Response HTTP to be sent to client
@@ -141,7 +141,7 @@ public class CookBook extends HttpServlet{
                 
                 Log.debug_wln("found "+recipe_results.size()+" results");
                 
-                Recipe r = recipe_results.get(0);
+                Recipe r = recipe_results.get(0); 
 
                 if(r!=null){
                     
@@ -340,7 +340,7 @@ public class CookBook extends HttpServlet{
             if(command==1){
                 Log.wdln("To execute CookBook command 1: Recipe selection request.");
                 
-                SearchResults searchresult = searchengine.runRequest(request);
+                SearchResults searchresult = searchengine.runRequest(request);  
                 
                 Log.debug_wdln("Cookbook: received search results: "+searchresult);
                 
@@ -533,7 +533,7 @@ public class CookBook extends HttpServlet{
         if(request.getRequestURI().endsWith("/Menu")){
             Log.wln("handing over request to Menu handler");
             this.handler_menu.processRequest(request, response);
-        }else if(request.getRequestURI().endsWith("/Embed")){
+        }else if(request.getRequestURI().endsWith("/embed")){
             Log.wln("Handing over request to Embed handler");
             this.handler_embed.processRequest(request, response);
         }else if(request.getRequestURI().endsWith("/Examples")){
@@ -566,7 +566,7 @@ public class CookBook extends HttpServlet{
         if(request.getRequestURI().endsWith("/Menu")){
             Log.wln("Handing over request to Menu handler");
             this.handler_menu.processRequest(request, response);
-        }else if(request.getRequestURI().endsWith("/Embed")){
+        }else if(request.getRequestURI().endsWith("/embed")){
             Log.wln("Handing over request to Embed handler");
             this.handler_embed.processRequest(request, response);
         }else if(request.getRequestURI().endsWith("/Examples")){

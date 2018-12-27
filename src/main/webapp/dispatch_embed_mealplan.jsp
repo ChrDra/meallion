@@ -35,7 +35,6 @@
             <meta property="og:image" content="" />
             
             <!--additional resources -->
-            <link href="css/dispatch_createrecipe.css" rel="stylesheet">
             <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
             <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
             

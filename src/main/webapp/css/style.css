@@ -60,6 +60,7 @@ html, body {
   font-size: 28px;
   line-height: 20px;
   color: #494949;
+  border: 1px solid rgba(0, 0, 0, 0.6);
 }
 
 h1,h2{
@@ -880,6 +881,7 @@ footer h3{
   margin: 20px 0 15px 0;
   color: #000000;
   font-size: 14px;
+  font-weight: bold;
 }
 
 footer .form-control{
@@ -976,7 +978,8 @@ footer .input-group-btn .btn{
 .ingredients_animation-target {
     -webkit-animation: animation 2000ms linear infinite both;
     animation: animation 2000ms linear infinite both;
-    z-index: -1;
+    z-index: -100;
+    position: relative;
 }
 
 
@@ -1056,3 +1059,473 @@ footer .input-group-btn .btn{
   100% { -webkit-transform: matrix3d(1.3, 0, 0, 0, 0, 1.3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.3, 0, 0, 0, 0, 1.3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
 }
 
+
+
+/* ACS STYLE */
+.carousel_container {
+  overflow: hidden !important;
+}
+
+#recipe_menu_switch_element > .green-border {
+  padding: 2px !important;
+}
+
+.footer-after > .container > .row > p {
+  margin: 0px auto;
+  float: none;
+  text-align: center;
+}
+
+.navigation-text-1 > li > a:hover,
+.navigation-text-1 > li > a:visited {
+  background: #ff9400;
+  color: #ffffff;
+}
+
+.extraOption {
+  width: 100%;
+  float: left;
+  border-radius: 30px;
+  padding: 0px 26px 10px 26px;
+}
+
+.extraOption .optTitle {
+  width: 50%;
+}
+
+.optTitle {    
+  float: left;
+  padding: 7px 0 0 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.optBtn {
+  float: right;
+}
+
+.no-margin {
+  margin: 0px !important;
+}
+
+/* Masonry Style */
+.post-container{
+  position:relative;
+  width:auto;
+  height:auto;
+  padding:0;
+  margin:0 0 30px;
+  overflow:hidden;
+  -webkit-box-shadow:0 0 1px 1px #ddd;
+  -moz-box-shadow:0 0 1px 1px #ddd;
+  -ms-box-shadow:0 0 1px 1px #ddd;
+  -o-box-shadow:0 0 1px 1px #ddd;
+  box-shadow:0 0 1px 1px #ddd;
+}
+.post-image{
+  background-color:#fff;
+}
+.post-image img:focus{outline:0}
+
+.col {
+  margin: 0;
+  padding: 5px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 1000;
+          perspective: 1000;
+  transition: -webkit-transform 0.25s ease 0s;
+  transition: transform 0.25s ease 0s;
+  transition: transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s;
+}
+.col:hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+          color : #63cc87;
+}
+.post-container {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.masry-feature {
+  width: 100%;
+  float: left;
+  position: absolute;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+}
+
+.masry-feature > .masry-imgFbg {
+  width: 18%;
+  float: right;
+  background: #ffffff;
+  align-items: center;
+  padding: 4px 0px;
+  margin-bottom: 15px;
+  border-radius: 0 10px 0 10px;
+}
+
+.masry-feature > .masry-imgFbg:hover {
+    width: 22%;
+}
+
+.masry-feature > .masry-imgFbg > .masry-img {
+  width: 40%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.masry-price {
+  width: 60px;
+  float: left;
+  background: #ffffff;
+  text-align: center;
+  padding: 4px 0px;
+  border-radius: 10px 0 10px 0;
+  box-shadow: 2px 3px 10px #999999;
+}
+
+
+.post-container .masry-title {
+  margin: 15px 0 0 0;
+  font-size: 15px;
+  padding: 0 8px; 
+}
+.post-container .masry-subtitle {
+  display: block;
+  padding: 8px 8px 0 8px;
+  color: #777777;
+}
+
+.masry-fullWidth {
+  width: 100%;
+  float: left;
+}
+
+.masry-fullWidth .masry-feature {
+  padding: 12px;
+  padding-right: 5px;
+  padding-top: 0px !important;
+}
+
+.masry-fullWidth .masry-feature .masry-featGroup {
+  border-radius: 0px;
+}
+
+.masry-fullWidth .masry-title {
+  margin: 15px 0 7px 0;
+}
+
+/*.masry-fullWidth .masry-title {
+  line-height: 1.9em;
+}*/
+
+.masry-feature .optBtn {
+  margin-left: 10px;
+}
+
+.masry-two > .col > .post-container {
+  padding: 0px;
+}
+
+.masry-two .post-container > .post-image > a > .masry-fullWidth .masry-title {
+  line-height: 3.4rem;
+}
+.masry-title {
+  width: 65%;
+}
+
+.masry-two .post-container > .post-image > a > .masry-fullWidth .masry-price {
+  float: right !important;
+  margin-right: 10px !important;
+}
+
+.masry-two .noImgFeature {
+  padding: 0px 5px 0 0 !important;
+}
+
+.noImgFeature {
+  width: 50%;
+  float: right;
+  position: initial;
+}
+
+
+.noImgFeature > .grid-price {
+  float: right;
+  margin: 3px 4px 0 11px;
+}
+
+/* button style */
+.masry-featGroup {
+  width: 105px;
+  float: right;
+  margin: 2px;
+}
+
+.masry-featGroup .input-group-btn .btn-number {
+  padding: 10px 8px;
+  font-weight: bold;
+}
+
+.masry-featGroup .input-number {
+  text-align: center;
+  padding: 0px;
+}
+
+
+@media (min-width: 768px) {
+  .col {
+    -webkit-column-break-inside: avoid;
+            break-inside: avoid;
+  }
+}
+
+.grid-clstr {
+  display: flex;
+  padding: 0;
+}
+
+
+
+/**
+  * Theming
+*/
+* {
+  box-sizing: border-box;
+}
+.tx-left {
+  text-align: left;
+}
+.tx-right {
+  text-align: right;
+}
+.tx-center {
+  text-align: center;
+}
+h3 {
+  margin-top: 0;
+}
+/**
+* Colors
+*/
+
+.bd-white {
+  /*border: 4px solid #ecf0f1;*/
+  border: 1px solid #63cc87;
+}
+
+/**
+* Images
+*/
+img.post-container {
+  border-radius: 10px 10px 0 0;
+  padding: 0;
+}
+@-webkit-keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Embed Logo Styling*/
+.embed-row .embed-logo {
+  margin: 10px 0;
+}
+
+.embed-row .no-picker {
+  /*float: right;*/
+}
+
+.embed-row .embed-feature {
+  margin-top: 8px;
+}
+
+.embed-feature .embed-label {
+  float: right;
+  margin-top: 11px;
+}
+
+.embed-row .embed-btn {
+  float: left;
+  margin-top: 11px;
+}
+
+.meallion_close {
+  margin-right: 13px;
+}
+
+
+@media (min-width: 768px) {
+  .embed-row > .col {
+    text-align: center;
+  }
+
+  .embed-feature .embed-label {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .txt-left {
+    text-align: left;
+  }
+
+  .txt-right {
+    text-align: right;
+  }
+}
+
+.rightPrice {
+  float: right !important;
+  margin: 3px 2px 0 0;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.mt-10 {
+  margin-top: 10px !important;
+} 
+.mt-12 {
+  margin-top: 12px !important;
+                            
+} 
+.mt-5 {
+  margin-top: 6px !important;
+} 
+.mt-7 {
+  margin-top: 7px !important;
+} 
+.mr-10 {
+  margin-right: 10px !important;
+} 
+
+
+
+/* checkbox slider ------------------------- */
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.checkbox_slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.checkbox_slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .checkbox_slider {
+  background-color: #ff9400;
+}
+
+input:focus + .checkbox_slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .checkbox_slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.checkbox_slider.round {
+  border-radius: 34px;
+}
+
+.checkbox_slider.round:before {
+  border-radius: 50%;
+}
+
+/* BEGIN CONTROL ELEMENTS */
+
+/* range slider ------------------------- */
+
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+}
+.range_slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;   
+    background: #63cc87;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+input[type=range]::-moz-range-track {
+    background-color: #63cc87;
+}
+
+input[type=range]::-moz-focus-inner {
+  outline: none;
+}
+
+.range_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #ff9400;
+    cursor: pointer;
+}
+
+.range_slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+    background: #ff9400;
+    cursor: pointer;
+}
+
+/*-----------------------------*/
+
+/* END CONTROL ELEMENTS */

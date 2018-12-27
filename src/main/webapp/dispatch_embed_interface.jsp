@@ -53,14 +53,17 @@ script is needed in here
 	
         <body>
             <nav class="navbar navbar-fixed-top" role="navigation">
-                <div class="container">
-                    <div class="row">  
-                        <div class="col col-lg-3 col-m-3 col-sm-3 col-xs-12">
-                            <img class="meallion_logo" src="https://www.meallion.de//images/elements/Meallion_logo.PNG">
+            <div class="row embed-row">  
+                <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-12 embed-logo">
+                    <img class="meallion_logo" src="https://www.meallion.de//images/elements/Meallion_logo.PNG">
+                </div>
+                <div class="col col-lg-4 col-md-4 col-sm-4 col-xs-12 embed-feature">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-12 col-xs-6">
+                            <span class="embed-label">W&auml;hle die Anzahl der Portionen:</span>
                         </div>
-                        <div class="col col-lg-3 col-m-3 col-sm-3 col-xs-12">
-                            W&auml;hle die Anzahl der Portionen:
-                            <div id="amount_picker" class="input-group orange-border">
+                        <div class="col-md-3 col-sm-12 col-xs-6 col-md-offset-1 col-sm-offset-3">
+                            <div id="amount_picker" class="input-group orange-border no-picker">
                                 <span class="input-group-btn">
                                     <button type="button" class="quantity-left-minus btn btn-number"  data-type="minus" data-field="">
                                         <span class="glyphicon glyphicon-minus"></span>
@@ -74,30 +77,55 @@ script is needed in here
                                 </span>
                             </div>
                         </div>
-                        <div class="col col-lg-3 col-m-3 col-sm-3 col-xs-12">
-                            <button id="add_to_cart" class="btn btn-primary">
-                                Men&uuml aktualisieren
-                            </button>
-                            <a href="http://localhost:8085/Meallion/Embed?menu">Zum Men&uuml;</a>
-                        </div>
                     </div>
                 </div>
-            </nav>
+                <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-6 embed-btn txt-right">
+                    <button id="add_to_cart" class="btn btn-primary">
+                        Men&uuml aktualisieren
+                    </button>
+                </div>
+                <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-6 embed-btn txt-left">
+                    <button id="to_menu" class="btn btn-primary">
+                        Zumdd Men&uuml!
+                    </button>
+                </div>
+            </div>
+        </nav>
             
             <div class="container embed-container">
                 <div class="row">
+                    
                     <% for(IngredientRecipe current_ir : ir) { %>
 
                         <div class="ingredient-element-placeholder">
-                            <div class="ingredient-element">
+                            <div class="ingredient-element" id="ingredient-<% out.print(current_ir.getIngredient().getId()); %>" data-price="<% out.print(current_ir.getIngredient().getPrice()); %>" data-amount="<% out.print(current_ir.getAmount()); %>" data-friendly-amount="<% out.print(current_ir.getFriendlyAmount()); %>">
                                 <div class="ingredient-element-name">
                                     <b><% out.print(current_ir.getIngredient().getName());%></b>
                                 </div>
+                                <div class="ingredient-element-amount">
+                                    <span class="ingredient-amount" ><% out.print(current_ir.getAmountString()); %></span> <% out.print(current_ir.getIngredient().getUnit()); %>
+                                </div>
+                                
+                                <% if(current_ir.getIngredient().hasFriendlyUnit()){ %>
+                                    <div class="ingredient-element-friendly-amount">
+                                        <span class="ingredient-friendly-amount" >ca. <% out.print(current_ir.getFriendlyAmountString()); %></span> <% out.print(current_ir.getIngredient().getFriendly_unit()); %>
+                                    </div>
+                                <% }else{ %>
+                                    <div class="ingredient-element-friendly-amount">
+                                        <br>
+                                    </div>
+                                <% } %>
+                                
+                                
                                 <div class="ingredient-element-img-placeholder">
                                     <div class="ingredient-element-img ingredients_animation-target" style="background-image: url('<% out.print(current_ir.getIngredient().getImgUrl()); %>')"></div>
                                 </div>
+                                <div class="ingredient-element-price">
+                                    &#8364; <span class="ingredient-price"><% out.print(current_ir.getIngredient().getPriceString(current_ir.getAmount()));%></span>
+                                </div>
                             </div>
                         </div>
+                                
                     <% } %>
                 </div>
             </div>
@@ -140,6 +168,11 @@ script is needed in here
 
                 $("#add_to_cart").click(function(){
                     $.ajax({url:"CookBook", data: {"command" : 2,"recipeid" : <% out.print(r.getId());%>, "portions": quantity, "request_ingredient_list": "false","mealplan_keyword": "custom_mealplan"}}).done(function(data){});
+                });
+                
+                $("#to_menu").click(function(){
+                    alert("gdfg");
+                    window.location = "/Menu";
                 });
 
             </script>   
