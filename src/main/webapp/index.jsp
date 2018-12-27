@@ -403,7 +403,6 @@
 
         <script>
             if(jQuery.browser.mobile){
-                alert("mobile");
                 $("#mobile_carousel").show();
                 $("#desktop_carousel").hide();
             }
