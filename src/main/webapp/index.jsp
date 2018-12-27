@@ -429,12 +429,10 @@
             }
              
             function startWaterfall(){
-                alert("hi");
                 // masonry
                 var e=$(window).width();
                 var t=$(".container-gallery");
                 t.imagesLoaded(function(){t.masonry()});
-                alert("hi");
                 var n=$(".wrapper-portfolio");
                 t.imagesLoaded(function(){n.masonry()});
             }
